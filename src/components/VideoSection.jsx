@@ -10,12 +10,12 @@ const VIDEOS = [
     {
         id: 'XGycHBSxka4',
         title: 'How Could You',
-        tag: 'Official Lyric Video'
+        tag: 'Official Music Video'
     },
     {
         id: 'i_QXTB3tIcE',
         title: 'Kometa',
-        tag: 'Music Video'
+        tag: 'Official Music Video'
     }
 ];
 

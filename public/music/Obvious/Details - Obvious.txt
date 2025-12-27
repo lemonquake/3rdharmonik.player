@@ -1,0 +1,21 @@
+'obvious': {
+            title: "Obvious",
+            subtitle: "Is it Obvious? OBVIOUS!",
+            theme: "theme-obvious",
+            content: `
+                <div class="song-popup-section">
+                    <h4 style="color: var(--neon-pink);">The Spark: A College Daydream</h4>
+                    <p>It started as a fleeting hum during a mundane college afternoon—a lightning-in-a-bottle melody that demanded to be caught. Aljay found himself capturing that precise, heart-racing moment of a massive college crush. The opening verse, <em>"Can we talk for a little more while? Can't get enough of it, your voice, your smile,"</em> isn't just a request; it’s a desperate plea to freeze time. It’s that intoxicating realization that the sound of their voice has suddenly become your favorite song, and silence is the only enemy.</p>
+                </div>
+                <div class="song-popup-section">
+                    <h4 style="color: var(--neon-blue);">The Realization: Cupid's Sniper Rifle</h4>
+                    <p>The chorus is the surrender. We aren't just talking about a nudge from Cupid here; this was a direct hit from a sniper. When the lyrics cry out, <em>"I'm sorry 'coz I love you now. Can't quite figure it out,"</em> it captures that terrifying, dizzying freefall of falling in love before you're ready. It describes a state of total helplessness—like being hit by a 'combo charm spell' in a video game that leaves you stunned, vulnerable, and completely obsessed.</p>
+                </div>
+                <div class="song-popup-section">
+                    <h4 style="color: var(--neon-green);">The Artist's Perspective: The Ambush</h4>
+                    <p class="quote">"How do you even reach that level of infatuation so fast? You don't even see it coming. It catches you completely off guard. You think you're just having a friendly conversation, and by the time you realize something is off, you're already drowning in it. You're in way too deep to swim back to shore." - Aljay</p>
+                </div>
+                <div class="song-popup-section">
+                    <h4 style="color: var(--neon-yellow);">The Confession: An Introvert's Brave Moment</h4>
+                    <p>The bridge acts as the song's internal monologue—the thoughts racing too fast to speak aloud. <em>"It's obvious, I know. But I wanna show I can't lie low."</em> For a self-proclaimed introvert, this bridge is a battlefield promotion. It’s that rare, surprising moment where the need to make someone feel special overpowers the fear of looking foolish. It’s awkward, it’s raw, and it’s a confession that proves love can make the quietest people do the loudest things.</p>
+                </div>

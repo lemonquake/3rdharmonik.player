@@ -8,6 +8,8 @@ import SongInfo from './components/SongInfo';
 import BandSection from './components/BandSection';
 import MemberDetails from './components/MemberDetails';
 import MiniPlayer from './components/MiniPlayer';
+import VideoSection from './components/VideoSection';
+import SocialSection from './components/SocialSection';
 import { resolvePath } from './utils/helpers';
 
 export default function App() {
@@ -31,6 +33,8 @@ export default function App() {
     const progressBarRef = useRef(null);
     const lyricsRef = useRef(null);
     const bandRef = useRef(null);
+    const videoRef = useRef(null);
+    const socialRef = useRef(null);
     const mainPlayerRef = useRef(null);
 
     const currentSong = songs[currentIndex];
@@ -167,6 +171,14 @@ export default function App() {
         bandRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
 
+    const scrollToVideo = () => {
+        videoRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    const scrollToSocial = () => {
+        socialRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
     // --- SCROLL DETECTION ---
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -229,6 +241,20 @@ export default function App() {
                         title="Band"
                     >
                         <Users className="w-6 h-6 text-purple-400 group-hover:scale-110 transition-transform" />
+                    </button>
+                    <button
+                        onClick={scrollToVideo}
+                        className="p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300 group shadow-lg"
+                        title="Videos"
+                    >
+                        <MonitorPlay className="w-6 h-6 text-cyan-400 group-hover:scale-110 transition-transform" />
+                    </button>
+                    <button
+                        onClick={scrollToSocial}
+                        className="p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-indigo-500/20 hover:border-indigo-500/50 transition-all duration-300 group shadow-lg"
+                        title="Socials"
+                    >
+                        <Share2 className="w-6 h-6 text-indigo-400 group-hover:scale-110 transition-transform" />
                     </button>
                 </div>
                 <div className="hidden md:block text-[10px] font-bold tracking-[0.2em] uppercase text-slate-500">
@@ -322,6 +348,12 @@ export default function App() {
 
                 {/* --- BAND SHOWCASE --- */}
                 <BandSection onMemberClick={setSelectedMember} bandRef={bandRef} />
+
+                {/* --- VIDEO EXPERIENCE --- */}
+                <VideoSection videoRef={videoRef} />
+
+                {/* --- CONNECT SECTION --- */}
+                <SocialSection socialRef={socialRef} />
             </main>
 
             <MemberDetails

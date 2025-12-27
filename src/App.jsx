@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { List, Music, Radio, Users, Mic2 } from 'lucide-react';
+import { List, Music, Radio, Users, Mic2, MonitorPlay, Share2 } from 'lucide-react';
 import { INITIAL_SONGS } from './data/songs';
 import Visualizer from './components/Visualizer';
 import Playlist from './components/Playlist';

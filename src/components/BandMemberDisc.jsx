@@ -62,7 +62,7 @@ const BandMemberDisc = ({ member, onDetails }) => {
                             <div className="absolute inset-0 bg-[repeating-radial-gradient(circle_at_center,transparent,transparent_2px,rgba(255,255,255,0.03)_3px)]"></div>
 
                             <img
-                                src={member.photo}
+                                src={resolvePath(member.photo)}
                                 alt={member.name}
                                 className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                             />
@@ -77,7 +77,7 @@ const BandMemberDisc = ({ member, onDetails }) => {
                             <div className="absolute inset-0 bg-[repeating-radial-gradient(circle_at_center,transparent,transparent_2px,rgba(255,255,255,0.03)_3px)]"></div>
 
                             <img
-                                src={member.photo}
+                                src={resolvePath(member.photo)}
                                 alt={member.name}
                                 className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                             />

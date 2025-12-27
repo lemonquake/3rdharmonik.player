@@ -1,0 +1,17 @@
+'how-could-you': {
+            title: "How Could You",
+            subtitle: "The Broken Trust Anthology",
+            theme: "theme-hcy",
+            content: `
+                <div class="song-popup-section">
+                    <h4 style="color: var(--neon-red);">The Origin: Ten Minutes of Fury</h4>
+                    <p>It didn't take weeks. It didn't take days. It took Aljay exactly <strong>10 minutes</strong> to channel a storm of raw emotion into existence. Sparked by Clyde's painful recounting of a past relationship, the song poured out in a torrential stream of consciousness. It wasn't written; it was erupted. It stands as a testament to the raw power of shared pain between bandmates.</p>
+                </div>
+                <div class="song-popup-section">
+                    <h4 style="color: var(--neon-blue);">The Core: When Idols Fall</h4>
+                    <p>This is the ultimate anthem of betrayal. It captures that specific, gut-wrenching moment when the person you placed on a pedestal kicks it out from under you. You look up to them, you give them your absolute all, you believe in them with every fiber of your being—and then, in one single swoop, it shatters. When the dust settles, only one desperate question remains echoing in the silence: <em>"How could you, my love?"</em></p>
+                </div>
+                <div class="song-popup-section">
+                    <h4 style="color: var(--neon-purple);">Lyrical Depth: The Double Meaning</h4>
+                    <p>The chorus delivers a crushing double-blow: <em>"You taught me how to understand. Now, you shattered my peace."</em> But look closer at the wreckage. The word 'peace' carries a jagged double meaning. It is also 'piece'—implying that a very large, integral fragment of his soul wasn't just disturbed, but broken off and destroyed beyond repair in an instant.</p>
+                </div>

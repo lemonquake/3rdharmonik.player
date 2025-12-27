@@ -7,6 +7,7 @@ import PlayerControls from './components/PlayerControls';
 import SongInfo from './components/SongInfo';
 import BandSection from './components/BandSection';
 import MemberDetails from './components/MemberDetails';
+import { resolvePath } from './utils/helpers';
 
 export default function App() {
     const [songs, setSongs] = useState(INITIAL_SONGS);
@@ -218,7 +219,7 @@ export default function App() {
 
                             {currentSong.cover ? (
                                 <img
-                                    src={currentSong.cover}
+                                    src={resolvePath(currentSong.cover)}
                                     alt={currentSong.title}
                                     className={`w-full h-full object-cover transition-all duration-700 ${isPlaying ? 'scale-110 opacity-70' : 'scale-100 opacity-50'}`}
                                 />
@@ -280,7 +281,7 @@ export default function App() {
 
             <audio
                 ref={audioRef}
-                src={currentSong.audio}
+                src={resolvePath(currentSong.audio)}
                 onTimeUpdate={handleTimeUpdate}
                 onEnded={handleSongEnd}
                 onCanPlay={handleCanPlay}

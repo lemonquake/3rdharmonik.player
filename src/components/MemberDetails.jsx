@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { X, Ruler, Heart, Star, ChevronLeft, ChevronRight, Users } from 'lucide-react';
+import { resolvePath } from '../utils/helpers';
 
 const MemberDetails = ({ member, onClose }) => {
     useEffect(() => {
@@ -41,7 +42,7 @@ const MemberDetails = ({ member, onClose }) => {
                         <div className="space-y-6">
                             <div className="relative aspect-square md:aspect-video rounded-2xl overflow-hidden border-2 border-white/5 shadow-2xl group">
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
-                                <img src={member.photo} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
+                                <img src={resolvePath(member.photo)} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
                                 <div className="absolute bottom-6 left-6 z-20">
                                     <span className="px-3 py-1 bg-pink-600 text-[8px] font-black uppercase tracking-[0.3em] rounded-md">Primary Identification</span>
                                 </div>
@@ -51,7 +52,7 @@ const MemberDetails = ({ member, onClose }) => {
                                 {member.extraPhotos.map((photo, i) => (
                                     <div key={i} className="relative aspect-square rounded-2xl overflow-hidden border border-white/10 group shadow-xl">
                                         <div className="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 transition-colors z-10"></div>
-                                        <img src={photo} alt={`${member.name} extra ${i}`} className="w-full h-full object-cover group-hover:scale-125 transition-transform duration-1000" />
+                                        <img src={resolvePath(photo)} alt={`${member.name} extra ${i}`} className="w-full h-full object-cover group-hover:scale-125 transition-transform duration-1000" />
                                         <div className="absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
                                             <Star className="w-4 h-4 text-cyan-400 fill-cyan-400" />
                                         </div>

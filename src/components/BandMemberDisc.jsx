@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { resolvePath } from '../utils/helpers';
 
 const BandMemberDisc = ({ member, onDetails }) => {
     const [rotation, setRotation] = useState(0);

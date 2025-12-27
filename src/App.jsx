@@ -7,6 +7,7 @@ import PlayerControls from './components/PlayerControls';
 import SongInfo from './components/SongInfo';
 import BandSection from './components/BandSection';
 import MemberDetails from './components/MemberDetails';
+import MiniPlayer from './components/MiniPlayer';
 import { resolvePath } from './utils/helpers';
 
 export default function App() {
@@ -23,12 +24,14 @@ export default function App() {
     const [isPlaylistOpen, setIsPlaylistOpen] = useState(false);
     const [isAudioReady, setIsAudioReady] = useState(false);
     const [selectedMember, setSelectedMember] = useState(null);
+    const [showMiniPlayer, setShowMiniPlayer] = useState(false);
 
     const audioRef = useRef(null);
     const canvasRef = useRef(null);
     const progressBarRef = useRef(null);
     const lyricsRef = useRef(null);
     const bandRef = useRef(null);
+    const mainPlayerRef = useRef(null);
 
     const currentSong = songs[currentIndex];
 
@@ -108,17 +111,20 @@ export default function App() {
     const togglePlay = () => setIsPlaying(!isPlaying);
 
     // --- SMOOTH PROGRESS BAR DRAGGING ---
-    const calculateProgress = (clientX) => {
-        if (!progressBarRef.current) return 0;
-        const rect = progressBarRef.current.getBoundingClientRect();
+    const calculateProgress = (clientX, rect) => {
+        if (!rect) return 0;
         const percent = Math.min(Math.max((clientX - rect.left) / rect.width, 0), 1);
         return percent * (duration || 1);
     };
 
-    const handlePointerDown = (e) => {
+    const handlePointerDown = (e, ref) => {
         e.preventDefault();
+        const targetRef = ref || progressBarRef;
+        if (!targetRef.current) return;
+
         const moveHandler = (moveEvent) => {
-            const newTime = calculateProgress(moveEvent.clientX);
+            const rect = targetRef.current.getBoundingClientRect();
+            const newTime = calculateProgress(moveEvent.clientX, rect);
             if (audioRef.current) audioRef.current.currentTime = newTime;
             setProgress(newTime);
         };
@@ -129,7 +135,8 @@ export default function App() {
         document.addEventListener('pointermove', moveHandler);
         document.addEventListener('pointerup', upHandler);
 
-        const initialTime = calculateProgress(e.clientX);
+        const rect = targetRef.current.getBoundingClientRect();
+        const initialTime = calculateProgress(e.clientX, rect);
         if (audioRef.current) audioRef.current.currentTime = initialTime;
         setProgress(initialTime);
     };
@@ -159,6 +166,27 @@ export default function App() {
     const scrollToBand = () => {
         bandRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
+
+    // --- SCROLL DETECTION ---
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                // If the main player is less than 20% visible, show mini player
+                setShowMiniPlayer(!entry.isIntersecting);
+            },
+            { threshold: 0.1 }
+        );
+
+        if (mainPlayerRef.current) {
+            observer.observe(mainPlayerRef.current);
+        }
+
+        return () => {
+            if (mainPlayerRef.current) {
+                observer.unobserve(mainPlayerRef.current);
+            }
+        };
+    }, []);
 
     return (
         <div className="min-h-screen bg-[#02020a] text-white font-sans overflow-x-hidden selection:bg-cyan-500 selection:text-black">
@@ -223,7 +251,7 @@ export default function App() {
             <main className={`relative z-10 w-full min-h-screen flex flex-col items-center justify-start transition-all duration-700 ease-in-out ${isPlaylistOpen ? 'scale-90 opacity-40 blur-xl pointer-events-none' : 'scale-100 opacity-100 blur-0'}`}>
 
                 {/* --- HEADER --- */}
-                <section className="w-full max-w-7xl px-4 pt-32 pb-20 flex flex-col items-center lg:flex-row lg:justify-center gap-16 lg:gap-24">
+                <section ref={mainPlayerRef} className="w-full max-w-7xl px-4 pt-32 pb-20 flex flex-col items-center lg:flex-row lg:justify-center gap-16 lg:gap-24">
 
                     {/* Visualizer and Cover */}
                     <div className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[450px] lg:h-[450px] flex-shrink-0">
@@ -299,6 +327,26 @@ export default function App() {
             <MemberDetails
                 member={selectedMember}
                 onClose={() => setSelectedMember(null)}
+            />
+
+            <MiniPlayer
+                currentSong={currentSong}
+                isPlaying={isPlaying}
+                togglePlay={togglePlay}
+                handleNext={handleNext}
+                handlePrev={handlePrev}
+                progress={progress}
+                duration={duration}
+                handlePointerDown={handlePointerDown}
+                repeatMode={repeatMode}
+                setRepeatMode={setRepeatMode}
+                isShuffle={isShuffle}
+                setIsShuffle={setIsShuffle}
+                volume={volume}
+                setVolume={setVolume}
+                isMuted={isMuted}
+                setIsMuted={setIsMuted}
+                isVisible={showMiniPlayer && !isPlaylistOpen}
             />
 
             <audio

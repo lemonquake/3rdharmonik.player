@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://lemonquake.github.io/3rdharmonik.player/",
+  "homepage": "https://aj-3harmonik.github.io/3rdharmonik.player/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

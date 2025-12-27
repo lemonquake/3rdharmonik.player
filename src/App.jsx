@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { List, Music, Radio } from 'lucide-react';
+import { List, Music, Radio, Users, Mic2 } from 'lucide-react';
 import { INITIAL_SONGS } from './data/songs';
 import Visualizer from './components/Visualizer';
 import Playlist from './components/Playlist';
@@ -28,6 +28,7 @@ export default function App() {
     const canvasRef = useRef(null);
     const progressBarRef = useRef(null);
     const lyricsRef = useRef(null);
+    const bandRef = useRef(null);
 
     const currentSong = songs[currentIndex];
 
@@ -155,6 +156,10 @@ export default function App() {
         lyricsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
 
+    const scrollToBand = () => {
+        bandRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
     return (
         <div className="min-h-screen bg-[#02020a] text-white font-sans overflow-x-hidden selection:bg-cyan-500 selection:text-black">
 
@@ -175,13 +180,30 @@ export default function App() {
 
             {/* --- NAVIGATION --- */}
             <nav className="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-[70] backdrop-blur-md bg-black/20">
-                <button
-                    onClick={() => setIsPlaylistOpen(!isPlaylistOpen)}
-                    className="p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300 group shadow-lg"
-                >
-                    <List className="w-6 h-6 text-cyan-400 group-hover:scale-110" />
-                </button>
-                <div className="text-[10px] font-bold tracking-[0.2em] uppercase text-slate-500">
+                <div className="flex items-center gap-2">
+                    <button
+                        onClick={() => setIsPlaylistOpen(!isPlaylistOpen)}
+                        className="p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300 group shadow-lg"
+                        title="Playlist"
+                    >
+                        <List className="w-6 h-6 text-cyan-400 group-hover:scale-110 transition-transform" />
+                    </button>
+                    <button
+                        onClick={scrollToLyrics}
+                        className="p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-pink-500/20 hover:border-pink-500/50 transition-all duration-300 group shadow-lg"
+                        title="Lyrics"
+                    >
+                        <Mic2 className="w-6 h-6 text-pink-400 group-hover:scale-110 transition-transform" />
+                    </button>
+                    <button
+                        onClick={scrollToBand}
+                        className="p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-purple-500/20 hover:border-purple-500/50 transition-all duration-300 group shadow-lg"
+                        title="Band"
+                    >
+                        <Users className="w-6 h-6 text-purple-400 group-hover:scale-110 transition-transform" />
+                    </button>
+                </div>
+                <div className="hidden md:block text-[10px] font-bold tracking-[0.2em] uppercase text-slate-500">
                     3rd Harmonik
                 </div>
             </nav>
@@ -271,7 +293,7 @@ export default function App() {
                 <SongInfo currentSong={currentSong} lyricsRef={lyricsRef} />
 
                 {/* --- BAND SHOWCASE --- */}
-                <BandSection onMemberClick={setSelectedMember} />
+                <BandSection onMemberClick={setSelectedMember} bandRef={bandRef} />
             </main>
 
             <MemberDetails

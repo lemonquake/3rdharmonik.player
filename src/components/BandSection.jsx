@@ -4,9 +4,9 @@ import BandMemberDisc from './BandMemberDisc';
 import MemberDetails from './MemberDetails';
 import { Users } from 'lucide-react';
 
-const BandSection = ({ onMemberClick }) => {
+const BandSection = ({ onMemberClick, bandRef }) => {
     return (
-        <section className="w-full max-w-7xl mx-auto px-6 py-32">
+        <section ref={bandRef} className="w-full max-w-7xl mx-auto px-6 py-32">
             <div className="flex flex-col items-center mb-20">
                 <div className="flex items-center gap-4 mb-4">
                     <div className="h-px w-10 bg-pink-500"></div>

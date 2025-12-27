@@ -43,9 +43,6 @@ const MemberDetails = ({ member, onClose }) => {
                             <div className="relative aspect-square md:aspect-video rounded-2xl overflow-hidden border-2 border-white/5 shadow-2xl group">
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
                                 <img src={resolvePath(member.photo)} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
-                                <div className="absolute bottom-6 left-6 z-20">
-                                    <span className="px-3 py-1 bg-pink-600 text-[8px] font-black uppercase tracking-[0.3em] rounded-md">Primary Identification</span>
-                                </div>
                             </div>
 
                             <div className="grid grid-cols-2 gap-6 pb-4">
@@ -64,10 +61,6 @@ const MemberDetails = ({ member, onClose }) => {
 
                     {/* RIGHT: CONTENT (DOSSIER) */}
                     <div className="w-full lg:w-[45%] p-10 md:p-16 bg-gradient-to-br from-slate-900 to-black flex flex-col justify-center">
-                        <div className="flex items-center gap-3 mb-6">
-                            <div className="w-8 h-px bg-cyan-500"></div>
-                            <span className="text-cyan-400 font-mono text-[10px] uppercase tracking-[0.5em]">Personnel Dossier // 3HMP</span>
-                        </div>
 
                         <h2 className="text-5xl md:text-7xl font-black italic uppercase tracking-tighter text-white mb-4 drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]">
                             {member.name}
@@ -92,10 +85,6 @@ const MemberDetails = ({ member, onClose }) => {
                         </div>
 
                         <div className="mt-16 pt-8 border-t border-white/5 flex items-center justify-between">
-                            <div className="flex items-center gap-4 group">
-                                <div className="w-12 h-1 bg-pink-500 group-hover:w-20 transition-all duration-500"></div>
-                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 group-hover:text-white transition-colors">Verified Status: Active</span>
-                            </div>
                             <Users className="w-8 h-8 text-white/5" />
                         </div>
                     </div>

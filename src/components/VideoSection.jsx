@@ -33,7 +33,7 @@ const VideoSection = ({ videoRef }) => {
                     <div className="h-px w-10 bg-cyan-500"></div>
                 </div>
                 <h2 className="text-4xl md:text-6xl font-black italic uppercase italic tracking-tighter text-white text-center">
-                    Visual Experience
+                    SHOWCASE
                 </h2>
                 <p className="text-slate-500 text-sm font-mono mt-4 uppercase tracking-[0.3em]">Watch Our Stories Unfold</p>
             </div>
